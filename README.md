@@ -1,3 +1,18 @@
+# currency Exchange application 
+  purpose :to help the user to exchange any amount of currency by entering number in the input and select from and to currencies
+  and it will :
+  1-change the amount to the currency desired 
+  2-you can swap between the to and from currencies
+  3-change the amount to the top 9 currencies in the world
+  4-you can navigate to the page that change the amount from EUR-USD to change the amount from EUR to USD currency
+  5-you can navigate to the page that change the amount from EUR-GBP to change the amount from EUR to GBP currency
+
+# Important Note:
+  I used Fixed API with free subscribtion (100 request per month)
+  so , please subscribe it and change the API key if the subscribtion ended with any mail and any password
+  and change the value of apikey variable 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
