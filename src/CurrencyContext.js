@@ -13,7 +13,7 @@ export function CurrencyContextProvider(props) {
         to: ''
     });
     //api Key variable change it after subscribtion
-    let apiKey="dGtBMfJycXhYQ34BX68d8bRQp5mk471c";
+    let apiKey="f7qjx5PRntxRjQ5OXtIaVUHp2zVY50dJ";
     let [result, setResult] = useState(0);
     let [rate, setRate] = useState(0);
     const [loading, setloading] = useState(false);
