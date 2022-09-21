@@ -8,10 +8,12 @@ export function CurrencyContextProvider(props) {
 
     ////////////////////////////////////////USESTATES//////////////////////////////////////
     let [query, setQuery] = useState({
-        amount: 0,
+        amount: null,
         from: '',
         to: ''
     });
+    //api Key variable change it after subscribtion
+    let apiKey="dGtBMfJycXhYQ34BX68d8bRQp5mk471c";
     let [result, setResult] = useState(0);
     let [rate, setRate] = useState(0);
     const [loading, setloading] = useState(false);
@@ -106,7 +108,7 @@ useEffect(() => {
     async function convertToCurrencies(to, from, amount, callback) {
 
         setloading(true);
-        let { data } = await axios.get(`https://api.apilayer.com/fixer/convert?apikey=xHMAGhkv01IatQFdk9hmC3qIF2DekiwK&to=${to}&from=${from}&amount=${amount}`)
+        let { data } = await axios.get(`https://api.apilayer.com/fixer/convert?apikey=${apiKey}&to=${to}&from=${from}&amount=${amount}`)
         callback(data.result);
         if (callback === setResult) { setRate(data.info.rate); }
         if (document.getElementById("theLastRow")) { document.getElementById("theLastRow").classList.add("d-none"); }
@@ -151,7 +153,7 @@ useEffect(() => {
 
 ////////////////////////////////////////////////////// GETTING ALL THE CURRENCIES THAT AVAILABLE AT THE API ///////////////////////////////////////////////////////////
     async function getDropDownItems(x) {
-        let { data } = await axios.get("https://api.apilayer.com/fixer/symbols?apikey=xHMAGhkv01IatQFdk9hmC3qIF2DekiwK");
+        let { data } = await axios.get(`https://api.apilayer.com/fixer/symbols?apikey=${apiKey}`);
         let { symbols } = data;
         setdropDownItems(Object.getOwnPropertyNames(symbols));
         settitle(symbols[x])
@@ -159,7 +161,7 @@ useEffect(() => {
 
 ////////////////////////////////////////////// GET THE HISTORICAL RATE OF EXCHANGE BETWEEN THE SELECTED TWO CURRENCIES ///////////////////////////////////////////////////////////
     async function getHistoricalRates(from, to) {
-        let { data } = await axios.get(`https://api.apilayer.com/fixer/timeseries?apikey=xHMAGhkv01IatQFdk9hmC3qIF2DekiwK&start_date=2021-07-31&end_date=2022-07-31&base=${from}&symbols=${to}`)
+        let { data } = await axios.get(`https://api.apilayer.com/fixer/timeseries?apikey=${apiKey}&start_date=2021-07-31&end_date=2022-07-31&base=${from}&symbols=${to}`)
         setdataRates(data.rates);
 
 
